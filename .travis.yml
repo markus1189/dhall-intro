@@ -1,0 +1,20 @@
+#snippet:travis yml
+language:
+  - nix
+
+script:
+  - "./Build.hs"
+#end
+
+after_success:
+  - test "$TRAVIS_BRANCH" = "master"
+  - git config --global user.email "travis-ci@travis.org"
+  - git config --global user.name "Travis CI"
+  - git checkout -b pdf
+  - git add -f result/slides.pdf
+  - git commit -m "$(date --iso-8601) @ $(git rev-list --max-count=1 --abbrev-commit $TRAVIS_BRANCH)" -m "[skip ci]"
+  - git tag -f -a -m "Compilation on $(date --iso-8601) of commit $(git rev-list --max-count=1 --abbrev-commit $TRAVIS_BRANCH)" "pdf-$TRAVIS_BRANCH-$(git rev-list --max-count=1 --abbrev-commit $TRAVIS_BRANCH)"
+  - git push --tags --force-with-lease https://markus1189:$GITHUB_API_KEY@github.com/markus1189/how-this-presentation pdf
+
+env:
+  secure: "GEkc6/hgFnSLiflHkkRWTFil7CZrai76Ua0QmMfGOJZRbi7FMMXpT59WKiXO6GX5RR0QWNQNiHRrDmmGTI6BQyrM5G+Q7qPKc2tO4XO0MQbRYzuHStfolaQ0/dpQ34htDoIZ9e3DnurUrGsr1XSeMsD/rzCHtj5ZHuaqWv6YL1/DsZB0JCvkG22Plho0sVHNRheb9oj4vnbNsMcqyrZ9I9hqkGG2JT+4NiXUIrD/iN5XgDiSavDypzKNZNnpGjQoIzcFP4haR+75kpBmEX6W60c49s6WTRgAu6/DFp5BuOSoubpq7WGDEg7DI9rqcqDo1V024zAbxbDd/5hfIyv/2IOkoXscxfSYkVx3LKtsECAXr37bDiDkWgUHpQRuAjleqDRrTQQP5xMk6LeE1eFaA9keX7ugFnVHJpztnCad9C5jaSOtSqCXzO9V3XW1rUUnseIVpFzZUsWndDmU3U/oTe5+KDWxLdXrOcLImWKA1KFLlwXaZO5jO1pF+MfKi8oVayUfuygMOixTl/2GZD52AuzYDCaYhmk6GxJ9zgU7/HHwlo5BndM9it9KsHiHc56h+P2tOXkwtixVwhJlq/CmKUed1DjI7BydfaCBsTOjxRsNXZTGqu09u+aoB/KQkrYgh0BlR4pN7QY7Bg/bZ+U5dEAtxZTrJUn6gnz83CfYTyU="
