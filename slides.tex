@@ -35,15 +35,108 @@
 \begin{document}
 
 \begin{frame}[noframenumbering,plain]
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{images/dhall-logo.png}
+  \end{center}
   \titlepage{}
 \end{frame}
 
 \section{Introduction}\label{sec:introduction}
 
 \begin{frame}
-  \frametitle{Dhall}
-\end{frame}
+  \frametitle{What Is Dhall}
+  \begin{quote}
+    A configuration language guaranteed to terminate
+  \end{quote}
+  \begin{quote}
+    dhall is a total programming language specialized to configuration files
+  \end{quote}
+  \begin{itemize}
+  \item from Gabriel Gonzalez (Pipes, Turtle, \ldots{})
+  \item language: \url{github.com/dhall-lang/dhall-lang}
+  \item haskell: \url{github.com/dhall-lang/dhall-haskell}
+  \end{itemize}
+ \end{frame}
 
+ \begin{frame}
+   \frametitle{Features}
+   \begin{itemize}
+   \item \textbf{Haskell integration} \textemdash{} Dhall expressions can be
+     marshalled into Haskell
+   \item \textbf{Total} \textemdash{} Programs always terminate and will never
+     hang
+   \item \textbf{Safe} \textemdash{} Programs never crash or throw exceptions
+   \item \textbf{Distributed} \textemdash{} Expressions can reference other
+     expressions by URL or path
+   \item \textbf{Strong normalization} \textemdash{} Every expression can be
+     reduced to a normal form
+   \item \textbf{Statically typed} \textemdash{} Configuration files can be
+     validated ahead-of-time
+   \item \textbf{Strongly typed} \textemdash{} No coercions, casts or subtyping
+   \item \textbf{Built-in data types} \textemdash{} Includes lists, anonymous
+     records and anonymous unions
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{First Example}
+   TODO
+ \end{frame}
+
+ \section{Dhall Language}
+
+ \begin{frame}
+   \frametitle{Basic Types}
+   \begin{itemize}
+   \item Integers
+   \item Booleans
+   \item Naturals
+   \item Strings
+   \item Lists
+   \item Optionals
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Dhall Is Not A General Purpose Language}
+   \begin{itemize}
+   \item you might get frustrated if you want to program in it
+   \item that's not the purpose
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Normalization}
+   \begin{itemize}
+   \item strong normalization, thanks to the restrictions
+   \item some pretty cool optimizations
+   \item reduce programs with partial input possible
+   \item TODO: example
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{But Why Not XYZ}
+   \begin{itemize}
+   \item okay no presentation is complete without a rant
+   \item JSON
+     \begin{itemize}
+     \item no comments
+     \item repetition
+     \item annoying to write
+     \item no types!
+     \end{itemize}
+   \item YAML
+     \begin{itemize}
+     \item even more awful
+     \item think you know YAML? Let's see
+     \end{itemize}
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Mapping To Haskell}
+ \end{frame}
 \appendix{}
 
 \section*{Bonus}\label{sec:bonus}

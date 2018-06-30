@@ -207,10 +207,13 @@ rules sbtCompile downloadResource = do
 
   createByCopy "ditaa/*.ditaa"
 
-  buildDir </> "dhall/*.dhall" %> \out -> do
-    let inp = dropDirectory1 out
-    dhall inp
-    copyFileChanged (dropDirectory1 out) out
+  createByCopy "dhall/*.dhall"
+
+  -- buildDir </> "dhall/*.dhall" %> \out -> do
+  --   let inp = dropDirectory1 out
+  --   need [inp]
+  --   dhall inp
+  --   copyFileChanged inp out
 
   buildDir </> "dhall/*.json" %> \out -> do
     let inp = dropDirectory1 out -<.> "dhall"
@@ -312,7 +315,7 @@ hindent inp = do
   cmd "hindent" (opts ++ [inp])
 
 dhall :: FilePath -> Action ()
-dhall inp = cmd [FileStdin inp] "dhall"
+dhall inp = cmd [FileStdin inp] "/home/markus/repos/clones/dhall-haskell/.stack-work/dist/x86_64-linux-nix/Cabal-1.24.2.0/build/dhall/dhall" ["--plain"]
 
 scalafmt :: FilePath -> Action ()
 scalafmt inp = do

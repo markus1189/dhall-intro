@@ -1,0 +1,4 @@
+{
+  url = "https://github.com/dhall-lang/dhall-lang/raw/master/img/dhall-logo.png",
+  transformations = [] : List Text
+}
