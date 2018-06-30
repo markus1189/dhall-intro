@@ -207,7 +207,10 @@ rules sbtCompile downloadResource = do
 
   createByCopy "ditaa/*.ditaa"
 
-  createByCopy "dhall/*.dhall"
+  buildDir </> "dhall/*.dhall" %> \out -> do
+    let inp = dropDirectory1 out
+    dhall inp
+    copyFileChanged (dropDirectory1 out) out
 
   buildDir </> "dhall/*.json" %> \out -> do
     let inp = dropDirectory1 out -<.> "dhall"
@@ -307,6 +310,9 @@ hindent :: FilePath -> Action ()
 hindent inp = do
   opts <- askOracle (HindentOptions ())
   cmd "hindent" (opts ++ [inp])
+
+dhall :: FilePath -> Action ()
+dhall inp = cmd [FileStdin inp] "dhall"
 
 scalafmt :: FilePath -> Action ()
 scalafmt inp = do
