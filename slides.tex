@@ -83,10 +83,20 @@
    TODO
  \end{frame}
 
+ \begin{frame}
+   \frametitle{Useful Tools}
+   \begin{itemize}
+   \item dhall
+   \item dhall-repl
+   \item dhall-format
+   \item dhall-<json,text,bash>
+   \end{itemize}
+ \end{frame}
+
  \section{Dhall Language}
 
  \begin{frame}
-   \frametitle{Basic Types}
+   \frametitle{Language Features}
    \begin{itemize}
    \item Integers
    \item Booleans
@@ -94,6 +104,11 @@
    \item Strings
    \item Lists
    \item Optionals
+   \item Records
+   \item \textbf{Unions}
+   \item Functions
+   \item Imports
+   \item Let expressions
    \end{itemize}
  \end{frame}
 
@@ -108,9 +123,10 @@
  \begin{frame}
    \frametitle{Normalization}
    \begin{itemize}
-   \item strong normalization, thanks to the restrictions
+   \item total: every program terminates (eventually)
+   \item seems like a heavy restriction
    \item some pretty cool optimizations
-   \item reduce programs with partial input possible
+   \item reduce/optimize programs with partial input possible
    \item TODO: example
    \end{itemize}
  \end{frame}
@@ -129,14 +145,95 @@
    \item YAML
      \begin{itemize}
      \item even more awful
-     \item think you know YAML? Let's see
+     \item think you know YAML?\@ Let's see
      \end{itemize}
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{JSON for Configuration}
+   \begin{center}
+     \includegraphics[width=0.6\textwidth]{static-images/duckduckgo-dont-use-json.png}
+   \end{center}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Unions}
+   \begin{itemize}
+   \item the constructors keyword
+   \item smart constructors
+   \item mapping to Haskell
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Imports}
+   \begin{itemize}
+   \item file imports
+   \item url imports
+   \item
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{The Prelude}
+   \begin{itemize}
+   \item List
+   \item Optional
    \end{itemize}
  \end{frame}
 
  \begin{frame}
    \frametitle{Mapping To Haskell}
  \end{frame}
+
+ \section{Getting Out}
+
+ \begin{frame}
+   \frametitle{To JSON}
+   % https://github.com/dhall-lang/dhall-json
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{To YAML}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{To Bash}
+   % https://github.com/dhall-lang/dhall-bash
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{To Text}
+   % https://github.com/dhall-lang/dhall-text
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{To Nix}
+   % https://github.com/dhall-lang/dhall-nix
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{To Cabal}
+   % https://github.com/dhall-lang/dhall-to-cabal
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{To K8s}
+   % https://github.com/dhall-lang/dhall-kubernetes
+ \end{frame}
+
+ \section{Conclusion}
+
+ \begin{frame}
+   \frametitle{References}
+   \begin{itemize}
+   \item language: \url{github.com/dhall-lang/dhall-lang}
+   \item haskell: \url{github.com/dhall-lang/dhall-haskell}
+   \item tutorial: \url{hackage.haskell.org/package/dhall/docs/Dhall-Tutorial.html}
+   \end{itemize}
+ \end{frame}
+
 \appendix{}
 
 \section*{Bonus}\label{sec:bonus}
