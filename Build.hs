@@ -18,7 +18,6 @@ import           Data.Maybe (mapMaybe)
 import           Data.Monoid ((<>))
 import qualified Data.Text as T
 import qualified Data.Text as TS
-import qualified Data.Text.Lazy as TL
 import           Development.Shake
 import           Development.Shake.Classes
 import           Development.Shake.FilePath
@@ -262,7 +261,7 @@ rules sbtCompile downloadResource = do
 
 dhallFormat :: FilePath -> Action String
 dhallFormat inp = do
-  Stdout out <- cmd (FileStdin inp : cmdOpts) "dhall-format"
+  Stdout out <- cmd (FileStdin inp : cmdOpts) "dhall" ["format"]
   return out
 
 jqPretty :: String -> Action String
@@ -315,7 +314,7 @@ hindent inp = do
   cmd "hindent" (opts ++ [inp])
 
 dhall :: FilePath -> Action ()
-dhall inp = cmd [FileStdin inp] "/home/markus/repos/clones/dhall-haskell/.stack-work/dist/x86_64-linux-nix/Cabal-1.24.2.0/build/dhall/dhall" ["--plain"]
+dhall inp = cmd [FileStdin inp] "dhall"
 
 scalafmt :: FilePath -> Action ()
 scalafmt inp = do
@@ -403,7 +402,7 @@ download res uri target = withResource res 1 $ traced "download" $ do
   BL.writeFile target (r ^. Wreq.responseBody)
 
 readDhall :: (D.Interpret a, MonadIO m) => String -> m a
-readDhall p = liftIO $ D.input D.auto (TL.pack $ "./" <> p)
+readDhall p = liftIO $ D.input D.auto (T.pack $ "./" <> p)
 
 applyTransformation :: String -> Text -> Action ()
 applyTransformation out t = cmd [Stdin ""] "convert" (words (TS.unpack t) ++ [out, out])

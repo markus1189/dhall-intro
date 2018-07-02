@@ -1,6 +1,6 @@
-{ nixpkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> {} }:
 
-let callPackage = nixpkgs.haskellPackages.callPackage; in
+let callPackage = pkgs.haskellPackages.callPackage; in
 
 rec {
   dhall-bash = callPackage ./dhall-bash.nix { inherit dhall; };
