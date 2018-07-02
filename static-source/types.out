@@ -1,0 +1,5 @@
+  Natural
+-> forall (natural : Type)
+-> forall (succ : natural -> natural)
+-> forall (zero : natural)
+-> natural

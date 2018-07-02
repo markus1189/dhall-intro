@@ -1,0 +1,8 @@
+True
+False
+True || False
+True && False
+True == True
+True != True
+if True then 42 else 1337
+if False then 42 else 1337

@@ -4,8 +4,7 @@
 
 let
   latestDhall = (import ./nix { inherit pkgs; });
-  codecentricFont = import ./cc-font.nix { inherit pkgs; };
-  #snippet:ghc packages
+  codecentricFont = import ./font-cc.nix { inherit pkgs; };
   ghcPackages = ghc.withPackages (p: with p;
     [
       latestDhall.dhall
@@ -21,7 +20,6 @@ let
       wreq
     ]
   );
-  #end
   latexPackages = texlive.combine {
     inherit (texlive)
     animate
@@ -57,9 +55,7 @@ let
     xstring
     ;
   };
-  #snippet:python packages
   pyPackages = with pythonPackages; [ pygments pillow ];
-  #end
 in
   mkShell {
     FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ google-fonts ubuntu_font_family ] ++ (if useCodecentricFont then [codecentricFont] else []); };

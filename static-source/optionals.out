@@ -1,0 +1,4 @@
+[] : Optional Integer
+[] : Optional Natural
+["foo"] : Optional Text
+:type Optional/fold

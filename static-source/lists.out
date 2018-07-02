@@ -1,0 +1,9 @@
+[] : List Natural
+[ 1, 2, 3 ]
+[ 1, 2 ] # [ 3, 4 ]
+List/length Text ["foo", "bar"]
+List/head Natural [1, 2, 3]
+List/last Natural [1, 2, 3]
+List/reverse Natural [1, 2, 3]
+:type List/fold
+:type List/build
