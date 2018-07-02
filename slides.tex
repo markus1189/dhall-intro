@@ -43,6 +43,75 @@
 
 \section{Introduction}\label{sec:introduction}
 
+\begin{frame}[fragile]
+  \frametitle{Motivation}
+  \begin{minted}{text}
+library
+   build-depends: base >=4.7 && <5
+                , aeson
+                , text
+                , lens            <-----------+
+                , rio                         |
+                , more...                     |
+executable my-app                             |
+   build-depends: base >=4.7 && <5            |
+                , aeson    -- <-+             |
+                , text     --    \            |
+                , lens     --     +-- SAME! --+
+                , rio      --    /
+                , more...  -- <-+
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Motivation}
+  \begin{minted}{yaml}
+# docker-compose.yml
+services:
+  service1:
+    environment:                   #   \
+      LOGSTASH_HOST: logstash      #   |--+
+      LOGSTASH_PORT: 5607          #   /  |
+                                   #      |
+  service2:                        #      |
+    environment:                   #   \  |
+      LOGSTASH_HOST: logstash      #   |--+  SAME!
+      LOGSTASH_PORT: 5607          #   /  |
+                                   #      |
+  service42:                       #      |
+    environment:                   #   \  |
+      LOGSTASH_HOST: logstash      #   |--+
+      LOGSTASH_PORT: 5607          #   /
+    \end{minted}
+  \end{frame}
+
+  \begin{frame}[fragile]
+    \frametitle{Motivation}
+    \begin{minted}[fontsize=\scriptsize]{yaml}
+# liquibase migration file
+- changeSet:
+    changes:
+      - createTable:
+          tableName: my-table
+          columns:
+            - column:
+                name: firstname
+                type: varchar
+                constraints:
+                  nullable: false
+            - column:
+                name: lastname
+                type: varchar
+                constraints:
+                  nullable: false
+            - column:
+                name: address
+                type: varchar
+                constraints:
+                  nullable: false
+    \end{minted}
+  \end{frame}
+
 \begin{frame}
   \frametitle{What Is Dhall}
   \begin{quote}
@@ -55,6 +124,7 @@
   \item from Gabriel Gonzalez (Pipes, Turtle, \ldots{})
   \item language: \url{github.com/dhall-lang/dhall-lang}
   \item haskell: \url{github.com/dhall-lang/dhall-haskell}
+  \item This presentation: \textbf{dhall-1.15.0}
   \end{itemize}
  \end{frame}
 
@@ -81,17 +151,18 @@
  \begin{frame}
    \frametitle{First Example}
 
-   \inputminted{text}{dhall/example-two.dhall}
+   \inputminted{text}{dhall/example.dhall}
  \end{frame}
 
  \begin{frame}
-   \frametitle{Useful Tools}
-   \begin{itemize}
-   \item dhall
-   \item dhall-repl
-   \item dhall-format
-   \item dhall-<json,text,bash>
-   \end{itemize}
+   \frametitle{First Example \textemdash{} Evaluation}
+
+   \inputminted[fontsize=\small]{text}{static-source/example.dhall.out}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{The Dhall Tool}
+   \inputminted[fontsize=\scriptsize]{text}{static-source/dhall-help.out}
  \end{frame}
 
  \section{Dhall Language}
@@ -100,22 +171,25 @@
    \frametitle{Language Features}
    \begin{itemize}
    \item Integers
-   \item Booleans
    \item Naturals
+   \item Doubles
+   \item Booleans
    \item Strings
    \item Lists
-   \item Optionals
    \item Records
+   \item \textbf{Optionals}
    \item \textbf{Unions}
-   \item Functions
-   \item Imports
-   \item Let expressions
+   \item \textbf{Functions}
+   \item \textbf{Imports}
+   \item \textbf{Let expressions}
    \end{itemize}
  \end{frame}
 
  \begin{frame}
    \frametitle{Dhall Is Not A General Purpose Language}
    \begin{itemize}
+   \item before we go in deeper, important disclaimer
+   \item dhall is \textbf{not} a general purpose language
    \item you might get frustrated if you want to program in it
    \item that's not the purpose
    \end{itemize}

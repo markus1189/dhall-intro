@@ -1,0 +1,14 @@
+$ dhall < example.dhall
+{ x : Natural
+, y : Natural
+, foo : Text
+, bar : Text
+, foobar : Text
+}
+
+{ x = 1
+, y = 2
+, foo = "foo"
+, bar = "bar"
+, foobar = "foobar"
+}

@@ -1,0 +1,21 @@
+Usage: dhall ([version] | [resolve] | [type] | [normalize] | [repl] | [diff] |
+             [hash] | [lint] | [format] | [freeze]) [--explain] [--plain]
+  Interpreter for the Dhall language
+
+Available options:
+  -h,--help                Show this help text
+  --explain                Explain error messages in more detail
+  --plain                  Disable syntax highlighting
+
+Available commands:
+  version                  Display version
+  resolve                  Resolve an expression's imports
+  type                     Infer an expression's type
+  normalize                Normalize an expression
+  repl                     Interpret expressions in a REPL
+  diff                     Render the difference between the normal form of two
+                           expressions
+  hash                     Compute semantic hashes for Dhall expressions
+  lint                     Improve Dhall code
+  format                   Formatter for the Dhall language
+  freeze                   Add hashes to all import statements of an expression
