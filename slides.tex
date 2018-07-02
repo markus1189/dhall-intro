@@ -82,12 +82,12 @@ services:
     environment:                   #   \  |
       LOGSTASH_HOST: logstash      #   |--+
       LOGSTASH_PORT: 5607          #   /
-    \end{minted}
-  \end{frame}
+  \end{minted}
+\end{frame}
 
-  \begin{frame}[fragile]
-    \frametitle{Motivation}
-    \begin{minted}[fontsize=\scriptsize]{yaml}
+\begin{frame}[fragile]
+  \frametitle{Motivation}
+  \begin{minted}[fontsize=\scriptsize]{yaml}
 # liquibase migration file
 - changeSet:
     changes:
@@ -109,8 +109,8 @@ services:
                 type: varchar
                 constraints:
                   nullable: false
-    \end{minted}
-  \end{frame}
+  \end{minted}
+\end{frame}
 
 \begin{frame}
   \frametitle{What Is Dhall}
