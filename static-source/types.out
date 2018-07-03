@@ -1,3 +1,4 @@
+-- :type Natural/fold
   Natural
 -> forall (natural : Type)
 -> forall (succ : natural -> natural)

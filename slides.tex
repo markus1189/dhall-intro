@@ -164,6 +164,9 @@ services:
  \end{frame}
 
  \section{Dhall Language}
+  \begin{frame}
+   {\Huge Dhall Language}
+ \end{frame}
 
  \begin{frame}
    \frametitle{Language Features}
@@ -200,12 +203,17 @@ services:
 
  \begin{frame}[fragile]
    \frametitle{Doubles}
-   \inputminted{text}{static-source/ints.out}
+   \inputminted{text}{static-source/doubles.out}
  \end{frame}
 
  \begin{frame}[fragile]
    \frametitle{Booleans}
    \inputminted{text}{static-source/bools.out}
+ \end{frame}
+
+ \begin{frame}[fragile]
+   \frametitle{Text}
+   \inputminted{text}{static-source/texts.out}
  \end{frame}
 
  \begin{frame}[fragile]
@@ -231,12 +239,66 @@ services:
 
  \begin{frame}[fragile]
    \frametitle{Optionals}
-   \inputminted{text}{static-source/optionals.out}
+   \inputminted[fontsize=\footnotesize]{text}{static-source/optionals.out}
    \inputminted[fontsize=\footnotesize]{text}{dhall/optional-fold.dhall}
  \end{frame}
 
+ \begin{frame}[fragile]
+   \frametitle{Records}
+   \inputminted{text}{static-source/records.out}
+ \end{frame}
+
+ \begin{frame}[fragile]
+   \frametitle{Combining Records 1}
+   \begin{itemize}
+   \item not recursive
+   \item changes type if necessary
+   \end{itemize}
+   \inputminted{text}{static-source/records-combine1.out}
+ \end{frame}
+
+ \begin{frame}[fragile]
+   \frametitle{Combining Records 2}
+   \begin{itemize}
+   \item recursive
+   \item error on field collision (not a record)
+   \end{itemize}
+   \inputminted{text}{static-source/records-combine2.out}
+ \end{frame}
+
+  \begin{frame}
+   \frametitle{Unions}
+   \begin{itemize}
+   \item the constructors keyword
+   \item smart constructors via \texttt{constructors}
+   \item mapping to Haskell
+   \item later: some helpers
+   \item TODO
+   \end{itemize}
+ \end{frame}
+
  \begin{frame}
-   \frametitle{Normalization}
+   \frametitle{Imports}
+   \begin{itemize}
+   \item file imports
+   \item url imports
+   \item import the whole prelude!
+   \item import fallbacks via \texttt{?}
+   \item headers for authorization
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{The Prelude}
+   \begin{itemize}
+   \item import a single function
+   \item or: there is a \texttt{package.dhall} file
+   \item \url{https://github.com/dhall-lang/Prelude}
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Dhall Is Total}
    \begin{itemize}
    \item total: every program terminates (eventually)
    \item seems like a heavy restriction
@@ -245,6 +307,14 @@ services:
    \item TODO: example
    \end{itemize}
  \end{frame}
+
+ \section{Dhall And Haskell}
+
+ \begin{frame}
+   {\Huge Dhall And Haskell}
+ \end{frame}
+
+ \section{Getting Out}
 
  \begin{frame}
    \frametitle{But Why Not XYZ}
@@ -271,38 +341,6 @@ services:
      \includegraphics[width=0.6\textwidth]{static-images/duckduckgo-dont-use-json.png}
    \end{center}
  \end{frame}
-
- \begin{frame}
-   \frametitle{Unions}
-   \begin{itemize}
-   \item the constructors keyword
-   \item smart constructors
-   \item mapping to Haskell
-   \end{itemize}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Imports}
-   \begin{itemize}
-   \item file imports
-   \item url imports
-   \item
-   \end{itemize}
- \end{frame}
-
- \begin{frame}
-   \frametitle{The Prelude}
-   \begin{itemize}
-   \item List
-   \item Optional
-   \end{itemize}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Mapping To Haskell}
- \end{frame}
-
- \section{Getting Out}
 
  \begin{frame}
    \frametitle{To JSON}
