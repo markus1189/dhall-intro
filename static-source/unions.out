@@ -1,0 +1,5 @@
+< Left = 1 | Right : Text >
+< Left : Natural | Right = "text" >
+\(a : Type) -> < None = {=} | Some : a >
+\(a : Type) -> \(x : a) -> < None : {} | Some = x >
+< Dog : Text | Cat : Text | Bird : Text | Fish = "nemo" >

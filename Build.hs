@@ -206,7 +206,7 @@ rules sbtCompile downloadResource = do
 
   createByCopy "ditaa/*.ditaa"
 
-  createByCopy "dhall/*.dhall"
+  createByCopy "dhall/**/*"
 
   -- buildDir </> "dhall/*.dhall" %> \out -> do
   --   let inp = dropDirectory1 out

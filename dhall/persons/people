@@ -1,0 +1,5 @@
+-- people
+[ { first = "Markus", last = "Hauck" }
+, { first = "Lotte", last = "Rie" }
+, { first = "Rainer", last = "Zufall" }
+]

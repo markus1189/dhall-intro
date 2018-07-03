@@ -1,0 +1,4 @@
+-- Person
+{ first : Text
+, last : Text
+}

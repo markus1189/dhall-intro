@@ -266,35 +266,52 @@ services:
    \inputminted{text}{static-source/records-combine2.out}
  \end{frame}
 
+ \begin{frame}
+   \frametitle{Unions}
+   \inputminted{text}{static-source/unions.out}
+ \end{frame}
+
   \begin{frame}
    \frametitle{Unions}
    \begin{itemize}
-   \item the constructors keyword
-   \item smart constructors via \texttt{constructors}
-   \item mapping to Haskell
-   \item later: some helpers
-   \item TODO
+   \item thankfully there is \texttt{constructors}
    \end{itemize}
+   \inputminted{text}{dhall/constructors.dhall}
  \end{frame}
 
  \begin{frame}
    \frametitle{Imports}
    \begin{itemize}
-   \item file imports
-   \item url imports
-   \item import the whole prelude!
-   \item import fallbacks via \texttt{?}
-   \item headers for authorization
+   \item imports are a central feature
+   \item import via path or url
+   \item terms \texttt{and} types
    \end{itemize}
  \end{frame}
 
+ \begin{frame}[fragile]
+   \frametitle{Imports}
+   \inputminted{text}{dhall/persons/people}
+   \inputminted{text}{dhall/persons/Person}
+   \begin{minted}{text}
+./people : List ./Person
+   \end{minted}
+ \end{frame}
+
  \begin{frame}
+   \frametitle{Imports}
+ \end{frame}
+
+\begin{frame}
    \frametitle{The Prelude}
    \begin{itemize}
    \item import a single function
    \item or: there is a \texttt{package.dhall} file
    \item \url{https://github.com/dhall-lang/Prelude}
    \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Using Types As A Schema}
  \end{frame}
 
  \begin{frame}
