@@ -282,6 +282,11 @@ services:
   \inputminted{text}{dhall/constructors.dhall}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Environment Variables}
+  \inputminted{text}{dhall/env.dhall}
+\end{frame}
+
 \begin{frame}
   \frametitle{Imports}
   \begin{itemize}
@@ -305,6 +310,7 @@ services:
   \begin{itemize}
   \item import via url
   \end{itemize}
+  \vfill
   \inputminted{text}{dhall/persons/UrlImport.dhall}
 \end{frame}
 
@@ -315,7 +321,18 @@ services:
   \item you can add checksums to imports
   \item \texttt{dhall freeze} to the rescue
   \end{itemize}
+  \vfill
   \inputminted[fontsize=\scriptsize]{text}{dhall/persons/UrlImportFrozen.dhall}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Imports: Alternatives}
+  \begin{itemize}
+  \item scenario: what if an import fails
+  \item we would like to have a fallback / mirror
+  \end{itemize}
+  \vfill
+  \inputminted{text}{dhall/persons/UrlImportFallback.dhall}
 \end{frame}
 
 \begin{frame}
@@ -431,12 +448,35 @@ services:
   \end{minted}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Reading Functions}
+  \begin{itemize}
+  \item think a moment how cool that is
+  \end{itemize}
+  \inputminted{haskell}{snippets/function.hs}
+  \inputminted{haskell}{snippets/function-input.hs}
+\end{frame}
+
 \section{Other Formats}
 
 \begin{frame}
-  \frametitle{But Why Not XYZ}
+  \begin{center}
+    {\Huge Other Formats}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Other Formats}
   \begin{itemize}
-  \item okay no presentation is complete without a rant
+  \item unfortunately not everything is in Haskell
+  \item lucky: Dhall can be converted into other formats
+  \item JSON, YAML, Bash, Cabal, \ldots{}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{But Why Not X???}
+  \begin{itemize}
   \item JSON
     \begin{itemize}
     \item no comments
@@ -446,54 +486,111 @@ services:
     \end{itemize}
   \item YAML
     \begin{itemize}
-    \item even more awful
+    \item it has comments!
+    \item but: even more awful
     \item think you know YAML?\@ Let's see
     \end{itemize}
   \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{YAML \textemdash{} Make A Guess}
+  \begin{minted}{yaml}
+DE: Germany
+EN: England
+NO: Norway
+ON: Ontario, Canada
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{YAML \textemdash{} Boolean}
+  \begin{minted}[fontsize=]{yaml}
+- yes
+- Yes
+- YES
+- true
+- True
+- TRUE
+- on
+- On
+- ON
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{YAML}
+  \begin{minted}{yaml}
+python: 3.5.3
+postgres: 9.3
+  \end{minted}
+\end{frame}
+
 \begin{frame}
-  \frametitle{JSON for Configuration}
+  \frametitle{YAML}
+  \begin{itemize}
+  \item very hard to edit, easy to mess up
+  \item indentation error does still parse, but differently
+  \item 9 different ways to write multiline strings http://bit.ly/2lT0NEd
+  \item non-intuitive quoting rules
+  \item \ldots{}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{From Dhall}
+  \begin{itemize}
+  \item the good news: you can convert Dhall
+    \begin{itemize}
+    \item JSON
+    \item YAML
+    \item Bash
+    \item Nix
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \begin{center}
-    \includegraphics[width=0.6\textwidth]{static-images/duckduckgo-dont-use-json.png}
+    {\Huge Demo}
   \end{center}
 \end{frame}
 
 \begin{frame}
-  \frametitle{To JSON}
-  % https://github.com/dhall-lang/dhall-json
-\end{frame}
-
-\begin{frame}
-  \frametitle{To YAML}
-\end{frame}
-
-\begin{frame}
-  \frametitle{To Bash}
-  % https://github.com/dhall-lang/dhall-bash
-\end{frame}
-
-\begin{frame}
-  \frametitle{To Text}
-  % https://github.com/dhall-lang/dhall-text
-\end{frame}
-
-\begin{frame}
-  \frametitle{To Nix}
-  % https://github.com/dhall-lang/dhall-nix
-\end{frame}
-
-\begin{frame}
-  \frametitle{To Cabal}
-  % https://github.com/dhall-lang/dhall-to-cabal
-\end{frame}
-
-\begin{frame}
-  \frametitle{To K8s}
-  % https://github.com/dhall-lang/dhall-kubernetes
+  \frametitle{Other Formats}
+  \begin{itemize}
+  \item JSON, YAML:\@ \url{https://github.com/dhall-lang/dhall-json}
+  \item Bash: \url{https://github.com/dhall-lang/dhall-bash}
+  \item Text Templates: \url{https://github.com/dhall-lang/dhall-text}
+  \item Nix: \url{https://github.com/dhall-lang/dhall-nix}
+  \item Cabal: \url{https://github.com/dhall-lang/dhall-to-cabal}
+  \item K8s: \url{https://github.com/dhall-lang/dhall-kubernetes}
+  \end{itemize}
 \end{frame}
 
 \section{Conclusion}
+
+\begin{frame}
+  \frametitle{Dhall Gotchas}
+  \begin{itemize}
+  \item hard if the target JSON/YAML is unprincipled
+  \item most of the translation support is very new
+  \item Dhall takes some time getting used to
+  \item some documentation missing (you can help!)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Dhall Advantages}
+  \begin{itemize}
+  \item get rid of YAML madness
+  \item type of your configuration as documentation
+  \item know if your config is correct
+  \item keep the config DRY and build abstraction
+  \item best case: map directly to your Haskell types
+  \item use functions, unions and advanced constructs
+  \end{itemize}
+\end{frame}
 
 \begin{frame}
   \frametitle{References}
@@ -501,11 +598,16 @@ services:
   \item language: \url{github.com/dhall-lang/dhall-lang}
   \item haskell: \url{github.com/dhall-lang/dhall-haskell}
   \item tutorial: \url{hackage.haskell.org/package/dhall/docs/Dhall-Tutorial.html}
+  \item this talk: \url{https://github.com/markus1189/dhall-intro}
+  \item yaml: \url{https://noyaml.com/}
   \end{itemize}
 \end{frame}
 
-\appendix{}
+\begin{frame}
+  \begin{center}
+    {\Huge Thank you for your attention}
+  \end{center}
+\end{frame}
 
-\section*{Bonus}\label{sec:bonus}
 
 \end{document}

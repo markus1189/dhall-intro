@@ -32,6 +32,11 @@ fooBarBazInput :: Text -> IO [FooBarBaz]
 fooBarBazInput = input auto
 --snippet:end
 
+--snippet:function
+interpolate :: Text -> IO (Text -> Text)
+interpolate = input auto
+--snippet:end
+
 --snippet:persons-main
 main :: IO ()
 main = do
@@ -49,3 +54,10 @@ main = do
 --snippet:end
   fbb <- fooBarBazInput "../dhall/unions.dhall"
   print fbb
+
+--snippet:function-apply
+main2 = do
+  f <- interpolate "\\(t : Text) -> t ++ \"!!!\""
+  print (f "Hello, World")
+  -- Hello, World!!!
+--snippet:end
