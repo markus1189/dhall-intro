@@ -112,7 +112,7 @@ addOracles = do
                                                   ,"--config-str"
                                                   ,"maxColumn = 55"
                                                   ]
-  _ <- addOracle $ \(HindentOptions _) -> return ["--line-length", "55"]
+  _ <- addOracle $ \(HindentOptions _) -> return ["--line-length", "55", "-X", "TypeApplications", "-X", "OverloadedStrings"]
   _ <- addOracle $ \(DitaaOptions _) -> return ["--scale"
                                                ,"4"
                                                ,"--overwrite"
@@ -284,7 +284,7 @@ chktex inp = cmd cmdOpts "chktex" inp
 
 hlint :: FilePath -> Action ()
 hlint inp = do
-  cmd cmdOpts "hlint" inp
+  cmd cmdOpts "hlint" ["-XTypeApplications", "-XOverloadedStrings"] inp
 
 graphviz :: FilePath -> FilePath -> Action ()
 graphviz inp out = do

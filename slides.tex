@@ -128,281 +128,381 @@ services:
   \end{itemize}
  \end{frame}
 
- \begin{frame}
-   \frametitle{Features}
-   \begin{itemize}
-   \item \textbf{Haskell integration} \textemdash{} Dhall expressions can be
-     marshalled into Haskell
-   \item \textbf{Total} \textemdash{} Programs always terminate and will never
-     hang
-   \item \textbf{Safe} \textemdash{} Programs never crash or throw exceptions
-   \item \textbf{Distributed} \textemdash{} Expressions can reference other
-     expressions by URL or path
-   \item \textbf{Strong normalization} \textemdash{} Every expression can be
-     reduced to a normal form
-   \item \textbf{Statically typed} \textemdash{} Configuration files can be
-     validated ahead-of-time
-   \item \textbf{Strongly typed} \textemdash{} No coercions, casts or subtyping
-   \item \textbf{Built-in data types} \textemdash{} Includes lists, anonymous
-     records and anonymous unions
-   \end{itemize}
- \end{frame}
-
- \begin{frame}
-   \frametitle{First Example}
-   \inputminted{text}{dhall/example.dhall}
- \end{frame}
-
- \begin{frame}
-   \frametitle{First Example \textemdash{} Evaluation}
-   \inputminted[fontsize=\small]{text}{static-source/example.dhall.out}
- \end{frame}
-
- \begin{frame}
-   \frametitle{The Dhall Tool}
-   \inputminted[fontsize=\scriptsize]{text}{static-source/dhall-help.out}
- \end{frame}
-
- \section{Dhall Language}
-  \begin{frame}
-   {\Huge Dhall Language}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Language Features}
-   \begin{itemize}
-   \item Integers
-   \item Naturals
-   \item Doubles
-   \item Booleans
-   \item Strings
-   \item Lists
-   \item Records
-   \item \textbf{Optionals}
-   \item \textbf{Unions}
-   \item \textbf{Functions}
-   \item \textbf{Imports}
-   \item \textbf{Let expressions}
-   \end{itemize}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Dhall Is Not A General Purpose Language}
-   \begin{itemize}
-   \item before we go in deeper, important disclaimer
-   \item dhall is \textbf{not} a general purpose language
-   \item you might get frustrated if you want to program in it
-   \item that's not the purpose
-   \end{itemize}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Integers}
-   \inputminted{text}{static-source/ints.out}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Doubles}
-   \inputminted{text}{static-source/doubles.out}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Booleans}
-   \inputminted{text}{static-source/bools.out}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Text}
-   \inputminted{text}{static-source/texts.out}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Reading Types}
-   \inputminted{text}{static-source/types.out}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Naturals}
-   \inputminted{text}{static-source/nats.out}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Let Bindings}
-   \inputminted{text}{dhall/lets.dhall}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Lists}
-   \inputminted{text}{static-source/lists.out}
-   \inputminted{text}{dhall/list-fold.dhall}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Optionals}
-   \inputminted[fontsize=\footnotesize]{text}{static-source/optionals.out}
-   \inputminted[fontsize=\footnotesize]{text}{dhall/optional-fold.dhall}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Records}
-   \inputminted{text}{static-source/records.out}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Combining Records 1}
-   \begin{itemize}
-   \item not recursive
-   \item changes type if necessary
-   \end{itemize}
-   \inputminted{text}{static-source/records-combine1.out}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Combining Records 2}
-   \begin{itemize}
-   \item recursive
-   \item error on field collision (not a record)
-   \end{itemize}
-   \inputminted{text}{static-source/records-combine2.out}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Unions}
-   \inputminted{text}{static-source/unions.out}
- \end{frame}
-
-  \begin{frame}
-   \frametitle{Unions}
-   \begin{itemize}
-   \item thankfully there is \texttt{constructors}
-   \end{itemize}
-   \inputminted{text}{dhall/constructors.dhall}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Imports}
-   \begin{itemize}
-   \item imports are a central feature
-   \item import via path or url
-   \item terms \texttt{and} types
-   \end{itemize}
- \end{frame}
-
- \begin{frame}[fragile]
-   \frametitle{Imports}
-   \inputminted{text}{dhall/persons/people}
-   \inputminted{text}{dhall/persons/Person}
-   \begin{minted}{text}
-./people : List ./Person
-   \end{minted}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Imports}
- \end{frame}
+\begin{frame}
+  \frametitle{Features}
+  \begin{itemize}
+  \item \textbf{Haskell integration} \textemdash{} Dhall expressions can be
+    marshalled into Haskell
+  \item \textbf{Total} \textemdash{} Programs always terminate and will never
+    hang
+  \item \textbf{Safe} \textemdash{} Programs never crash or throw exceptions
+  \item \textbf{Distributed} \textemdash{} Expressions can reference other
+    expressions by URL or path
+  \item \textbf{Strong normalization} \textemdash{} Every expression can be
+    reduced to a normal form
+  \item \textbf{Statically typed} \textemdash{} Configuration files can be
+    validated ahead-of-time
+  \item \textbf{Strongly typed} \textemdash{} No coercions, casts or subtyping
+  \item \textbf{Built-in data types} \textemdash{} Includes lists, anonymous
+    records and anonymous unions
+  \end{itemize}
+\end{frame}
 
 \begin{frame}
-   \frametitle{The Prelude}
-   \begin{itemize}
-   \item import a single function
-   \item or: there is a \texttt{package.dhall} file
-   \item \url{https://github.com/dhall-lang/Prelude}
-   \end{itemize}
- \end{frame}
+  \frametitle{First Example}
+  \inputminted{text}{dhall/example.dhall}
+\end{frame}
+
+\begin{frame}
+  \frametitle{First Example \textemdash{} Evaluation}
+  \inputminted[fontsize=\small]{text}{static-source/example.dhall.out}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Dhall Tool}
+  \inputminted[fontsize=\scriptsize]{text}{static-source/dhall-help.out}
+\end{frame}
+
+\section{Dhall Language}
+\begin{frame}
+  \begin{center}
+    {\Huge Dhall Language}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Language Features}
+  \begin{itemize}
+  \item Integers
+  \item Naturals
+  \item Doubles
+  \item Booleans
+  \item Strings
+  \item Lists
+  \item Records
+  \item \textbf{Optionals}
+  \item \textbf{Unions}
+  \item \textbf{Functions}
+  \item \textbf{Imports}
+  \item \textbf{Let expressions}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Dhall Is Not A General Purpose Language}
+  \begin{itemize}
+  \item before we go in deeper, important disclaimer
+  \item dhall is \textbf{not} a general purpose language
+  \item you might get frustrated if you want to program in it
+  \item that's not the purpose
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Integers}
+  \inputminted{text}{static-source/ints.out}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Doubles}
+  \inputminted{text}{static-source/doubles.out}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Booleans}
+  \inputminted{text}{static-source/bools.out}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Text}
+  \inputminted{text}{static-source/texts.out}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Reading Types}
+  \inputminted{text}{static-source/types.out}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Naturals}
+  \inputminted{text}{static-source/nats.out}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Let Bindings}
+  \inputminted{text}{dhall/lets.dhall}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Lists}
+  \inputminted{text}{static-source/lists.out}
+  \inputminted{text}{dhall/list-fold.dhall}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Optionals}
+  \inputminted[fontsize=\footnotesize]{text}{static-source/optionals.out}
+  \inputminted[fontsize=\footnotesize]{text}{dhall/optional-fold.dhall}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Records}
+  \inputminted{text}{static-source/records.out}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Combining Records 1}
+  \begin{itemize}
+  \item not recursive
+  \item changes type if necessary, right side has priority
+  \item useful to specify defaults
+  \end{itemize}
+  \inputminted{text}{static-source/records-combine1.out}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Combining Records 2}
+  \begin{itemize}
+  \item recursive
+  \item error on field collision (not a record)
+  \end{itemize}
+  \inputminted{text}{static-source/records-combine2.out}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Unions}
+  \inputminted{text}{static-source/unions.out}
+\end{frame}
 
  \begin{frame}
-   \frametitle{Using Types As A Schema}
- \end{frame}
+  \frametitle{Unions}
+  \begin{itemize}
+  \item thankfully there is \texttt{constructors}
+  \end{itemize}
+  \inputminted{text}{dhall/constructors.dhall}
+\end{frame}
 
- \begin{frame}
-   \frametitle{Dhall Is Total}
-   \begin{itemize}
-   \item total: every program terminates (eventually)
-   \item seems like a heavy restriction
-   \item some pretty cool optimizations
-   \item reduce/optimize programs with partial input possible
-   \item TODO: example
-   \end{itemize}
- \end{frame}
+\begin{frame}
+  \frametitle{Imports}
+  \begin{itemize}
+  \item imports are a central feature
+  \item import via path or url
+  \item terms \texttt{and} types
+  \end{itemize}
+\end{frame}
 
- \section{Dhall And Haskell}
+\begin{frame}[fragile]
+  \frametitle{Imports}
+  \inputminted{text}{dhall/persons/people}
+  \inputminted{text}{dhall/persons/Person}
+  \begin{minted}{text}
+./people : List ./Person
+  \end{minted}
+\end{frame}
 
- \begin{frame}
-   {\Huge Dhall And Haskell}
- \end{frame}
+\begin{frame}
+  \frametitle{Imports}
+  \begin{itemize}
+  \item import via url
+  \end{itemize}
+  \inputminted{text}{dhall/persons/UrlImport.dhall}
+\end{frame}
 
- \section{Getting Out}
+\begin{frame}
+  \frametitle{Imports}
+  \begin{itemize}
+  \item but is that safe?
+  \item you can add checksums to imports
+  \item \texttt{dhall freeze} to the rescue
+  \end{itemize}
+  \inputminted[fontsize=\scriptsize]{text}{dhall/persons/UrlImportFrozen.dhall}
+\end{frame}
 
- \begin{frame}
-   \frametitle{But Why Not XYZ}
-   \begin{itemize}
-   \item okay no presentation is complete without a rant
-   \item JSON
-     \begin{itemize}
-     \item no comments
-     \item repetition
-     \item annoying to write
-     \item no types!
-     \end{itemize}
-   \item YAML
-     \begin{itemize}
-     \item even more awful
-     \item think you know YAML?\@ Let's see
-     \end{itemize}
-   \end{itemize}
- \end{frame}
+\begin{frame}
+  \frametitle{The Prelude}
+  \begin{itemize}
+  \item Dhall also has a Prelude with lots of functions
+  \item import a-la-carte or get everything
+  \item \url{https://github.com/dhall-lang/Prelude}
+  \end{itemize}
+\end{frame}
 
- \begin{frame}
-   \frametitle{JSON for Configuration}
-   \begin{center}
-     \includegraphics[width=0.6\textwidth]{static-images/duckduckgo-dont-use-json.png}
-   \end{center}
- \end{frame}
+\begin{frame}
+  \frametitle{The Prelude}
+  \inputminted[fontsize=\scriptsize]{text}{dhall/use-prelude.dhall}
+\end{frame}
 
- \begin{frame}
-   \frametitle{To JSON}
-   % https://github.com/dhall-lang/dhall-json
- \end{frame}
+\begin{frame}[fragile]
+  \frametitle{Using Types As A Schema}
+  \begin{itemize}
+  \item need a schema?
+  \item use types!
+  \end{itemize}
+ \inputminted{text}{dhall/schema/Schema}
+ \begin{minted}{text}
+./myConfig : ./Schema
+ \end{minted}
+\end{frame}
 
- \begin{frame}
-   \frametitle{To YAML}
- \end{frame}
+\begin{frame}
+  \frametitle{Dhall Is Total}
+  \begin{itemize}
+  \item total: every program terminates (eventually)
+  \item seems like a heavy restriction
+  \item some pretty cool optimizations
+  \item reduce/optimize programs with partial input possible
+  \end{itemize}
+\end{frame}
 
- \begin{frame}
-   \frametitle{To Bash}
-   % https://github.com/dhall-lang/dhall-bash
- \end{frame}
+\begin{frame}[fragile]
+  \frametitle{Dhall Is Total}
+  \inputminted[fontsize=\scriptsize]{text}{dhall/partial.dhall}
+  \begin{minted}[fontsize=\scriptsize]{text}
+./partial.dhall Text ["a", "b", "c"]
+-- \ (f : Text -> Text) -> [ f "a", f "b", f "c" ]
+  \end{minted}
+\end{frame}
 
- \begin{frame}
-   \frametitle{To Text}
-   % https://github.com/dhall-lang/dhall-text
- \end{frame}
+\section{Dhall And Haskell}
 
- \begin{frame}
-   \frametitle{To Nix}
-   % https://github.com/dhall-lang/dhall-nix
- \end{frame}
+\begin{frame}
+  \begin{center}
+    {\Huge Dhall And Haskell}
+  \end{center}
+\end{frame}
 
- \begin{frame}
-   \frametitle{To Cabal}
-   % https://github.com/dhall-lang/dhall-to-cabal
- \end{frame}
+\begin{frame}
+  \frametitle{Mapping To Haskell}
+  \begin{itemize}
+  \item have: type checked configuration
+  \item need: make values accessible in Haskell
+  \item \texttt{dhall-haskell} is the Haskell implementation of Dhall
+  \item map Dhall types to Haskell types
+  \item the best: also unions and functions!
+  \end{itemize}
+\end{frame}
 
- \begin{frame}
-   \frametitle{To K8s}
-   % https://github.com/dhall-lang/dhall-kubernetes
- \end{frame}
+\begin{frame}
+  \frametitle{Mapping To Haskell}
+  \begin{center}
+  \begin{tabular}{l l}
+    Dhall & Haskell \\ \hline
+    Text & Text \\
+    Natural & Natural \\
+    Integer & Int \\
+    Double & Double \\
+    List a & Vector a \\
+    Optional a & Maybe a \\
+    records & ADT \\
+    unions & ADT \\
+    functions & functions \\
+  \end{tabular}
+\end{center}
+\end{frame}
 
- \section{Conclusion}
+\begin{frame}
+  \frametitle{Reading Persons}
+  \inputminted{text}{dhall/persons/people}
+\end{frame}
 
- \begin{frame}
-   \frametitle{References}
-   \begin{itemize}
-   \item language: \url{github.com/dhall-lang/dhall-lang}
-   \item haskell: \url{github.com/dhall-lang/dhall-haskell}
-   \item tutorial: \url{hackage.haskell.org/package/dhall/docs/Dhall-Tutorial.html}
-   \end{itemize}
- \end{frame}
+\begin{frame}
+  \frametitle{Reading Persons}
+  \inputminted{haskell}{snippets/persons.hs}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Reading Persons}
+  \inputminted{haskell}{snippets/persons-main.hs}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Reading Unions}
+  \inputminted{haskell}{dhall/unions.dhall}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Reading Unions}
+  \inputminted{haskell}{snippets/unions.hs}
+  \begin{itemize}
+  \item reading the previous dhall expression:
+  \end{itemize}
+  \begin{minted}{haskell}
+[Foo {foo = "a foo"},Bar {bar = 42},Baz]
+  \end{minted}
+\end{frame}
+
+\section{Other Formats}
+
+\begin{frame}
+  \frametitle{But Why Not XYZ}
+  \begin{itemize}
+  \item okay no presentation is complete without a rant
+  \item JSON
+    \begin{itemize}
+    \item no comments
+    \item repetition
+    \item annoying to write
+    \item no types!
+    \end{itemize}
+  \item YAML
+    \begin{itemize}
+    \item even more awful
+    \item think you know YAML?\@ Let's see
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{JSON for Configuration}
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{static-images/duckduckgo-dont-use-json.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{To JSON}
+  % https://github.com/dhall-lang/dhall-json
+\end{frame}
+
+\begin{frame}
+  \frametitle{To YAML}
+\end{frame}
+
+\begin{frame}
+  \frametitle{To Bash}
+  % https://github.com/dhall-lang/dhall-bash
+\end{frame}
+
+\begin{frame}
+  \frametitle{To Text}
+  % https://github.com/dhall-lang/dhall-text
+\end{frame}
+
+\begin{frame}
+  \frametitle{To Nix}
+  % https://github.com/dhall-lang/dhall-nix
+\end{frame}
+
+\begin{frame}
+  \frametitle{To Cabal}
+  % https://github.com/dhall-lang/dhall-to-cabal
+\end{frame}
+
+\begin{frame}
+  \frametitle{To K8s}
+  % https://github.com/dhall-lang/dhall-kubernetes
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}
+  \frametitle{References}
+  \begin{itemize}
+  \item language: \url{github.com/dhall-lang/dhall-lang}
+  \item haskell: \url{github.com/dhall-lang/dhall-haskell}
+  \item tutorial: \url{hackage.haskell.org/package/dhall/docs/Dhall-Tutorial.html}
+  \end{itemize}
+\end{frame}
 
 \appendix{}
 
