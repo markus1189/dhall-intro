@@ -1,0 +1,6 @@
+{ remote : Text
+, port : Natural
+, timeout : Optional Natural
+, consumerKey : Text
+, accessToken : Text
+}

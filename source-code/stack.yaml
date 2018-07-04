@@ -1,0 +1,8 @@
+resolver: lts-11.16
+extra-deps:
+  - dhall-1.15.0
+nix:
+  enable: true
+  packages:
+    - gmp
+    - zlib
